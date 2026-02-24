@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SmartCalc | Quick Tip Calculator</title>
+
+<meta name="description" content="SmartCalc by Kris Dane Madlambayan (KD Madlambayan) is a comprehensive online platform for Fitness Calculators, Money & Budget Calculators, Time & Date Calculators, Age Calculator, Date Difference Calculator, Countdown Calculator, Work Hours Calculator, BMI Calculator, Heart Rate Calculator, Waist-to-Height Ratio, Water Intake Calculator, Quick Tip Calculator, Discount Calculator, Savings Goal Calculator, Profit/Loss Calculator. Fast, reliable, and easy-to-use calculators for personal and professional use.">
+<meta name="keywords" content="SmartCalc, Kris Dane Madlambayan, KD Madlambayan, Kris Dane, kris dane madlambayan, kdm, kris, dane ,Kris , Dane , Madlambayan online calculators, web calculators, BMI Calculator, Heart Rate Calculator, Waist-to-Height Ratio, Water Intake Calculator, Quick Tip Calculator, Discount Calculator, Savings Goal Calculator, Profit Loss Calculator, Age Calculator, Date Difference Calculator, Countdown Calculator, Work Hours Calculator, financial calculators, fitness calculators, time calculators, date calculators, online tools, free calculators, calculator website, SmartCalc tools, Kris Dane Madlambayan calculators, KD Madlambayan calculators, web-based calculators, event countdown, work hours tracker, health calculator, money management tools, personal finance tools, online math tools, SmartCalc online, Kris Dane Madlambayan online">
+<meta name="author" content="Kris Dane Madlambayan, KD Madlambayan, Kris D. Madlambayan, KD D. Madlambayan">
+
+<!-- Google Site Verification -->
+<meta name="google-site-verification" content="pCZnc5cDUrkdgndd0suCn599u-Hs4ZGvuYmlvNHGmaI" />
+
+<!-- Favicon -->
+<link rel="icon" type="image/png" href="smlogo.png">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="sidebar.css">
+</head>
+<body>
+
+<!-- Sidebar -->
+<div class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+       <h2 class="smartcalc-title">
+  <a href="index.html">SmartCalc</a>
+</h2>
+        <button class="sidebar-toggle" id="sidebarToggle">&#8617;</button> <!-- Close button -->
+    </div>
+
+    <ul class="sidebar-menu">
+        <!-- Fitness Calculators -->
+        <li class="menu-item has-dropdown">
+            <span class="menu-link">
+                FITNESS CALCULATORS
+                <span class="arrow">&#9662;</span>
+            </span>
+            <ul class="dropdown">
+                <li><a href="bmi.html">BMI Calculator</a></li>
+                <li><a href="heart.html">Heart Rate Calculator</a></li>
+                <li><a href="waist.html">Waist-to-Height Ratio</a></li>
+                <li><a href="water.html">Water Intake Calculator</a></li>
+            </ul>
+        </li>
+
+        <!-- Money & Budget Calculators -->
+        <li class="menu-item has-dropdown">
+            <span class="menu-link">
+                MONEY & BUDGET CALCULATORS
+                <span class="arrow">&#9662;</span>
+            </span>
+            <ul class="dropdown">
+                <li><a href="tip.html">Quick Tip Calculator</a></li>
+                <li><a href="discount.html">Discount Calculator</a></li>
+                <li><a href="savings.html">Savings Goal Calculator</a></li>
+                <li><a href="profit.html">Profit / Loss Calculator</a></li>
+            </ul>
+        </li>
+
+        <!-- Time & Date Calculators -->
+        <li class="menu-item has-dropdown">
+            <span class="menu-link">
+                TIME & DATE CALCULATORS
+                <span class="arrow">&#9662;</span>
+            </span>
+            <ul class="dropdown">
+                <li><a href="age.html">Age Calculator</a></li>
+                <li><a href="date.html">Date Difference Calculator</a></li>
+                <li><a href="count.html">Countdown Calculator</a></li>
+                <li><a href="hour.html">Work Hours Calculator</a></li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+<!-- Floating open button when sidebar is closed -->
+<button id="sidebarOpenBtn">&#8618;</button>
+
+<!-- Main Content -->
+<div class="main-content" id="mainContent">
+
+    <!-- Floating Background -->
+    <div class="bg">
+        <div class="blob"></div>
+        <div class="blob"></div>
+        <div class="blob"></div>
+    </div>
+<div class="container">
+  <div class="tip-card">
+    <h2>Quick Tip Calculator</h2>
+
+    <!-- Total Bill -->
+    <div class="input-group">
+      <label for="totalBill">Total Bill Amount</label>
+      <input type="number" id="totalBill" placeholder="Enter total bill">
+    </div>
+
+    <!-- Tip Percentage -->
+    <div class="input-group">
+      <label for="tipPercent">Tip Percentage (%)</label>
+      <input type="number" id="tipPercent" placeholder="Enter tip %">
+    </div>
+
+    <!-- Currency Selection -->
+    <div class="input-group">
+      <label for="currency">Select Currency</label>
+      <select id="currency">
+        <option value="$" selected>USD ($)</option>
+        <option value="€">EUR (€)</option>
+        <option value="£">GBP (£)</option>
+        <option value="₹">INR (₹)</option>
+        <option value="¥">JPY (¥)</option>
+        <option value="Other">Other (custom)</option>
+      </select>
+      <input type="text" id="customCurrency" placeholder="Enter custom symbol" class="hidden">
+    </div>
+
+    <!-- Buttons -->
+    <div class="button-group">
+      <button class="calculate" onclick="calculateTip()">Calculate</button>
+      <button class="reset" onclick="resetFields()">Reset</button>
+    </div>
+
+    <!-- Result -->
+    <div class="result">
+      <p id="tipAmount">Tip: $0.00</p>
+      <p id="totalPayment">Total Payment: $0.00</p>
+    </div>
+  </div>
+</div>
+</div>
+<script>
+// ==========================
+// Tip Calculator Script with custom currency
+
+const currencySelect = document.getElementById("currency");
+const customCurrencyInput = document.getElementById("customCurrency");
+
+// Show/hide custom currency input
+currencySelect.addEventListener("change", () => {
+    if (currencySelect.value === "Other") {
+        customCurrencyInput.classList.remove("hidden");
+    } else {
+        customCurrencyInput.classList.add("hidden");
+    }
+});
+
+function calculateTip() {
+  const total = parseFloat(document.getElementById('totalBill').value);
+  const percent = parseFloat(document.getElementById('tipPercent').value);
+
+  if (isNaN(total) || isNaN(percent)) {
+    alert("Please enter valid numbers.");
+    return;
+  }
+
+  const tip = total * (percent / 100);
+  const totalPayment = total + tip;
+
+  // Determine currency symbol
+  const currency = currencySelect.value === "Other" ? 
+                   (customCurrencyInput.value || "") : 
+                   currencySelect.value;
+
+  document.getElementById('tipAmount').textContent = `Tip: ${currency}${tip.toFixed(2)}`;
+  document.getElementById('totalPayment').textContent = `Total Payment: ${currency}${totalPayment.toFixed(2)}`;
+}
+
+function resetFields() {
+  document.getElementById('totalBill').value = '';
+  document.getElementById('tipPercent').value = '';
+  currencySelect.value = "$";
+  customCurrencyInput.value = '';
+  customCurrencyInput.classList.add("hidden");
+  document.getElementById('tipAmount').textContent = 'Tip: $0.00';
+  document.getElementById('totalPayment').textContent = 'Total Payment: $0.00';
+}
+</script>
+<script src="script.js"></script>
+<script src="sidebar.js"></script>
+</body>
+</html>

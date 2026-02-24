@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart Calc | Date Difference Calculator</title>
+
+<meta name="description" content="SmartCalc by Kris Dane Madlambayan (KD Madlambayan) is a comprehensive online platform for Fitness Calculators, Money & Budget Calculators, Time & Date Calculators, Age Calculator, Date Difference Calculator, Countdown Calculator, Work Hours Calculator, BMI Calculator, Heart Rate Calculator, Waist-to-Height Ratio, Water Intake Calculator, Quick Tip Calculator, Discount Calculator, Savings Goal Calculator, Profit/Loss Calculator. Fast, reliable, and easy-to-use calculators for personal and professional use.">
+<meta name="keywords" content="SmartCalc, Kris Dane Madlambayan, KD Madlambayan, Kris Dane, kris dane madlambayan, kdm, kris, dane ,Kris , Dane , Madlambayan online calculators, web calculators, BMI Calculator, Heart Rate Calculator, Waist-to-Height Ratio, Water Intake Calculator, Quick Tip Calculator, Discount Calculator, Savings Goal Calculator, Profit Loss Calculator, Age Calculator, Date Difference Calculator, Countdown Calculator, Work Hours Calculator, financial calculators, fitness calculators, time calculators, date calculators, online tools, free calculators, calculator website, SmartCalc tools, Kris Dane Madlambayan calculators, KD Madlambayan calculators, web-based calculators, event countdown, work hours tracker, health calculator, money management tools, personal finance tools, online math tools, SmartCalc online, Kris Dane Madlambayan online">
+<meta name="author" content="Kris Dane Madlambayan, KD Madlambayan, Kris D. Madlambayan, KD D. Madlambayan">
+
+<!-- Google Site Verification -->
+<meta name="google-site-verification" content="pCZnc5cDUrkdgndd0suCn599u-Hs4ZGvuYmlvNHGmaI" />
+
+<!-- Favicon -->
+<link rel="icon" type="image/png" href="smlogo.png">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="sidebar.css">
+</head>
+<body>
+
+<!-- Sidebar -->
+<div class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+        <h2 class="smartcalc-title">
+  <a href="index.html">SmartCalc</a>
+</h2>
+        <button class="sidebar-toggle" id="sidebarToggle">&#8617;</button> <!-- Close button -->
+    </div>
+
+    <ul class="sidebar-menu">
+        <!-- Fitness Calculators -->
+        <li class="menu-item has-dropdown">
+            <span class="menu-link">
+                FITNESS CALCULATORS
+                <span class="arrow">&#9662;</span>
+            </span>
+            <ul class="dropdown">
+                <li><a href="bmi.html">BMI Calculator</a></li>
+                <li><a href="heart.html">Heart Rate Calculator</a></li>
+                <li><a href="waist.html">Waist-to-Height Ratio</a></li>
+                <li><a href="water.html">Water Intake Calculator</a></li>
+            </ul>
+        </li>
+
+        <!-- Money & Budget Calculators -->
+        <li class="menu-item has-dropdown">
+            <span class="menu-link">
+                MONEY & BUDGET CALCULATORS
+                <span class="arrow">&#9662;</span>
+            </span>
+            <ul class="dropdown">
+                <li><a href="tip.html">Quick Tip Calculator</a></li>
+                <li><a href="discount.html">Discount Calculator</a></li>
+                <li><a href="savings.html">Savings Goal Calculator</a></li>
+                <li><a href="profit.html">Profit / Loss Calculator</a></li>
+            </ul>
+        </li>
+
+        <!-- Time & Date Calculators -->
+        <li class="menu-item has-dropdown">
+            <span class="menu-link">
+                TIME & DATE CALCULATORS
+                <span class="arrow">&#9662;</span>
+            </span>
+            <ul class="dropdown">
+                <li><a href="age.html">Age Calculator</a></li>
+                <li><a href="date.html">Date Difference Calculator</a></li>
+                <li><a href="count.html">Countdown Calculator</a></li>
+                <li><a href="hour.html">Work Hours Calculator</a></li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+<!-- Sidebar open button -->
+<button id="sidebarOpenBtn">&#8618;</button>
+
+<!-- Main Content -->
+<div class="main-content" id="mainContent">
+
+    <!-- Floating background -->
+    <div class="bg">
+        <div class="blob"></div>
+        <div class="blob"></div>
+        <div class="blob"></div>
+    </div>
+
+    <!-- Date Difference Calculator Card -->
+    <div class="container">
+        <div class="date-card">
+            <h2>Date Difference Calculator</h2>
+
+            <div class="input-group">
+                <label for="startDate">Start Date</label>
+                <input type="date" id="startDate" max="">
+            </div>
+
+            <div class="input-group">
+                <label for="endDate">End Date</label>
+                <input type="date" id="endDate" max="">
+            </div>
+
+            <div class="button-group">
+                <button class="calculate" onclick="calculateDateDifference()">Calculate</button>
+                <button class="reset" onclick="resetDateDifference()">Reset</button>
+            </div>
+
+            <div class="result" id="dateResult">
+                Enter dates to calculate the difference.
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// Sidebar dropdown functionality
+const sidebar = document.getElementById('sidebar');
+const sidebarToggle = document.getElementById('sidebarToggle');
+const sidebarOpenBtn = document.getElementById('sidebarOpenBtn');
+const mainContent = document.getElementById('mainContent');
+
+sidebarToggle.addEventListener('click', () => {
+    sidebar.classList.add('collapsed');
+    mainContent.classList.add('expanded');
+    sidebarOpenBtn.style.display = 'block';
+});
+
+sidebarOpenBtn.addEventListener('click', () => {
+    sidebar.classList.remove('collapsed');
+    mainContent.classList.remove('expanded');
+    sidebarOpenBtn.style.display = 'none';
+});
+
+// Dropdown toggle for multiple dropdowns
+document.querySelectorAll('.has-dropdown').forEach(item => {
+    const link = item.querySelector('.menu-link');
+    const dropdown = item.querySelector('.dropdown');
+    const arrow = link.querySelector('.arrow');
+
+    link.addEventListener('click', () => {
+        dropdown.classList.toggle('show');
+        arrow.classList.toggle('rotated');
+    });
+});
+
+// ==========================
+// Date Difference JS
+// ==========================
+const today = new Date().toISOString().split('T')[0];
+document.getElementById("startDate").setAttribute("max", today);
+document.getElementById("endDate").setAttribute("max", today);
+
+function calculateDateDifference() {
+    const start = new Date(document.getElementById("startDate").value);
+    const end = new Date(document.getElementById("endDate").value);
+
+    if (!start || !end || isNaN(start) || isNaN(end)) {
+        alert("Please enter valid start and end dates.");
+        return;
+    }
+
+    if (end < start) {
+        alert("End date cannot be before start date.");
+        return;
+    }
+
+    const diffTime = Math.abs(end - start);
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+    const resultDiv = document.getElementById("dateResult");
+    resultDiv.innerHTML = `There are <strong>${diffDays}</strong> days between the selected dates ✅`;
+}
+
+function resetDateDifference() {
+    document.getElementById("startDate").value = "";
+    document.getElementById("endDate").value = "";
+    document.getElementById("dateResult").textContent = "Enter dates to calculate the difference.";
+}
+</script>
+
+<script src="script.js"></script>
+<script src="sidebar.js"></script>
+</body>
+</html>

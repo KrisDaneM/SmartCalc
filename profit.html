@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Welcome to SmartCalc</title>
+
+<meta name="description" content="SmartCalc by Kris Dane Madlambayan (KD Madlambayan) is a comprehensive online platform for Fitness Calculators, Money & Budget Calculators, Time & Date Calculators, Age Calculator, Date Difference Calculator, Countdown Calculator, Work Hours Calculator, BMI Calculator, Heart Rate Calculator, Waist-to-Height Ratio, Water Intake Calculator, Quick Tip Calculator, Discount Calculator, Savings Goal Calculator, Profit/Loss Calculator. Fast, reliable, and easy-to-use calculators for personal and professional use.">
+<meta name="keywords" content="SmartCalc, Kris Dane Madlambayan, KD Madlambayan, Kris Dane, kris dane madlambayan, kdm, kris, dane ,Kris , Dane , Madlambayan online calculators, web calculators, BMI Calculator, Heart Rate Calculator, Waist-to-Height Ratio, Water Intake Calculator, Quick Tip Calculator, Discount Calculator, Savings Goal Calculator, Profit Loss Calculator, Age Calculator, Date Difference Calculator, Countdown Calculator, Work Hours Calculator, financial calculators, fitness calculators, time calculators, date calculators, online tools, free calculators, calculator website, SmartCalc tools, Kris Dane Madlambayan calculators, KD Madlambayan calculators, web-based calculators, event countdown, work hours tracker, health calculator, money management tools, personal finance tools, online math tools, SmartCalc online, Kris Dane Madlambayan online">
+<meta name="author" content="Kris Dane Madlambayan, KD Madlambayan, Kris D. Madlambayan, KD D. Madlambayan">
+
+<!-- Google Site Verification -->
+<meta name="google-site-verification" content="pCZnc5cDUrkdgndd0suCn599u-Hs4ZGvuYmlvNHGmaI" />
+
+<!-- Favicon -->
+<link rel="icon" type="image/png" href="smlogo.png">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="sidebar.css">
+</head>
+<body>
+
+<!-- Sidebar -->
+<div class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+        <h2 class="smartcalc-title">
+  <a href="index.html">SmartCalc</a>
+</h2>
+        <button class="sidebar-toggle" id="sidebarToggle">&#8617;</button> <!-- Close button -->
+    </div>
+
+    <ul class="sidebar-menu">
+        <!-- Fitness Calculators -->
+        <li class="menu-item has-dropdown">
+            <span class="menu-link">
+                FITNESS CALCULATORS
+                <span class="arrow">&#9662;</span>
+            </span>
+            <ul class="dropdown">
+                <li><a href="bmi.html">BMI Calculator</a></li>
+                <li><a href="heart.html">Heart Rate Calculator</a></li>
+                <li><a href="waist.html">Waist-to-Height Ratio</a></li>
+                <li><a href="water.html">Water Intake Calculator</a></li>
+            </ul>
+        </li>
+
+        <!-- Money & Budget Calculators -->
+        <li class="menu-item has-dropdown">
+            <span class="menu-link">
+                MONEY & BUDGET CALCULATORS
+                <span class="arrow">&#9662;</span>
+            </span>
+            <ul class="dropdown">
+                <li><a href="tip.html">Quick Tip Calculator</a></li>
+                <li><a href="discount.html">Discount Calculator</a></li>
+                <li><a href="savings.html">Savings Goal Calculator</a></li>
+                <li><a href="profit.html">Profit / Loss Calculator</a></li>
+            </ul>
+        </li>
+
+        <!-- Time & Date Calculators -->
+        <li class="menu-item has-dropdown">
+            <span class="menu-link">
+                TIME & DATE CALCULATORS
+                <span class="arrow">&#9662;</span>
+            </span>
+            <ul class="dropdown">
+                <li><a href="age.html">Age Calculator</a></li>
+                <li><a href="date.html">Date Difference Calculator</a></li>
+                <li><a href="count.html">Countdown Calculator</a></li>
+                <li><a href="hour.html">Work Hours Calculator</a></li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+<!-- Floating open button when sidebar is closed -->
+<button id="sidebarOpenBtn">&#8618;</button>
+
+<!-- Main Content -->
+<div class="main-content" id="mainContent">
+
+    <!-- Floating Background -->
+    <div class="bg">
+        <div class="blob"></div>
+        <div class="blob"></div>
+        <div class="blob"></div>
+    </div>
+<div class="container">
+  <div class="profit-card">
+    <h2>Profit / Loss Calculator</h2>
+
+    <!-- Currency Selector -->
+    <div class="input-group">
+      <label for="currency">Currency</label>
+      <select id="currency">
+        <option value="$">USD ($)</option>
+        <option value="₱">PHP (₱)</option>
+        <option value="€">EUR (€)</option>
+        <option value="£">GBP (£)</option>
+        <option value="₹">INR (₹)</option>
+        <option value="¥">JPY (¥)</option>
+      </select>
+    </div>
+
+    <div class="input-group">
+      <label for="costPrice">Cost Price</label>
+      <input type="number" id="costPrice" placeholder="Enter cost price">
+    </div>
+
+    <div class="input-group">
+      <label for="sellingPrice">Selling Price</label>
+      <input type="number" id="sellingPrice" placeholder="Enter selling price">
+    </div>
+
+    <div class="button-group">
+      <button class="calculate" onclick="calculateProfit()">Calculate</button>
+      <button class="reset" onclick="resetProfit()">Reset</button>
+    </div>
+
+    <div class="result">
+      <p id="profitResult">Enter values to calculate.</p>
+    </div>
+
+  </div>
+</div>
+
+<script>
+function calculateProfit() {
+    const cost = parseFloat(document.getElementById("costPrice").value);
+    const selling = parseFloat(document.getElementById("sellingPrice").value);
+    const currency = document.getElementById("currency").value;
+
+    if (isNaN(cost) || isNaN(selling)) {
+        alert("Please enter valid numbers.");
+        return;
+    }
+
+    const result = selling - cost;
+    const output = document.getElementById("profitResult");
+
+    if (result > 0) {
+        output.textContent = `Profit: ${currency}${result.toFixed(2)}`;
+        output.style.color = "#4ade80"; // green
+    } 
+    else if (result < 0) {
+        output.textContent = `Loss: ${currency}${Math.abs(result).toFixed(2)}`;
+        output.style.color = "#f87171"; // red
+    } 
+    else {
+        output.textContent = "No Profit, No Loss";
+        output.style.color = "white";
+    }
+}
+
+function resetProfit() {
+    document.getElementById("costPrice").value = "";
+    document.getElementById("sellingPrice").value = "";
+    document.getElementById("currency").value = "$";
+    const output = document.getElementById("profitResult");
+    output.textContent = "Enter values to calculate.";
+    output.style.color = "white";
+}
+</script>
+
+<script src="script.js"></script>
+<script src="sidebar.js"></script>
+</body>
+</html>
