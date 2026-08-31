@@ -1,142 +1,27 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Welcome to SmartCalc</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#07865c" />
+<title>SmartCalc – Fast, Accurate Online Calculators</title>
 
-<meta name="description" content="SmartCalc by Kris Dane Madlambayan (KD Madlambayan) is a comprehensive online platform for Fitness Calculators, Money & Budget Calculators, Time & Date Calculators, Age Calculator, Date Difference Calculator, Countdown Calculator, Work Hours Calculator, BMI Calculator, Heart Rate Calculator, Waist-to-Height Ratio, Water Intake Calculator, Quick Tip Calculator, Discount Calculator, Savings Goal Calculator, Profit/Loss Calculator. Fast, reliable, and easy-to-use calculators for personal and professional use.">
-<meta name="keywords" content="SmartCalc, Kris Dane Madlambayan, KD Madlambayan, Kris Dane, kris dane madlambayan, kdm, kris, dane ,Kris , Dane , Madlambayan online calculators, web calculators, BMI Calculator, Heart Rate Calculator, Waist-to-Height Ratio, Water Intake Calculator, Quick Tip Calculator, Discount Calculator, Savings Goal Calculator, Profit Loss Calculator, Age Calculator, Date Difference Calculator, Countdown Calculator, Work Hours Calculator, financial calculators, fitness calculators, time calculators, date calculators, online tools, free calculators, calculator website, SmartCalc tools, Kris Dane Madlambayan calculators, KD Madlambayan calculators, web-based calculators, event countdown, work hours tracker, health calculator, money management tools, personal finance tools, online math tools, SmartCalc online, Kris Dane Madlambayan online">
+<meta name="description" content="Free calculators for health, finance, math, time, conversions, and everyday life. Clear formulas, careful validation, and instant results." />
 <meta name="author" content="Kris Dane Madlambayan, KD Madlambayan, Kris D. Madlambayan, KD D. Madlambayan">
 
-<!-- Google Site Verification -->
 <meta name="google-site-verification" content="pCZnc5cDUrkdgndd0suCn599u-Hs4ZGvuYmlvNHGmaI" />
-
-<!-- Favicon -->
-<link rel="icon" type="image/png" href="smlogo.png">
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
-<link rel="stylesheet" href="sidebar.css">
+<meta property="og:site_name" content="SmartCalc" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="SmartCalc – Fast, Accurate Online Calculators" />
+<meta property="og:description" content="Clear, private calculators for everyday decisions." />
+<link rel="icon" type="image/png" href="/smlogo.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet" />
+<script>try{const t=localStorage.getItem('smartcalc-theme');if(t==='dark'||(!t&&matchMedia('(prefers-color-scheme: dark)').matches))document.documentElement.classList.add('dark')}catch{}</script>
 </head>
 <body>
-
-<!-- Sidebar -->
-<div class="sidebar" id="sidebar">
-    <div class="sidebar-header">
-        <h2 class="smartcalc-title">
-  <a href="index.html">SmartCalc</a>
-</h2>
-        <button class="sidebar-toggle" id="sidebarToggle">&#8617;</button> <!-- Close button -->
-    </div>
-
-    <ul class="sidebar-menu">
-        <!-- Fitness Calculators -->
-        <li class="menu-item has-dropdown">
-            <span class="menu-link">
-                FITNESS CALCULATORS
-                <span class="arrow">&#9662;</span>
-            </span>
-            <ul class="dropdown">
-                <li><a href="bmi.html">BMI Calculator</a></li>
-                <li><a href="heart.html">Heart Rate Calculator</a></li>
-                <li><a href="waist.html">Waist-to-Height Ratio</a></li>
-                <li><a href="water.html">Water Intake Calculator</a></li>
-            </ul>
-        </li>
-
-        <!-- Money & Budget Calculators -->
-        <li class="menu-item has-dropdown">
-            <span class="menu-link">
-                MONEY & BUDGET CALCULATORS
-                <span class="arrow">&#9662;</span>
-            </span>
-            <ul class="dropdown">
-                <li><a href="tip.html">Quick Tip Calculator</a></li>
-                <li><a href="discount.html">Discount Calculator</a></li>
-                <li><a href="savings.html">Savings Goal Calculator</a></li>
-                <li><a href="profit.html">Profit / Loss Calculator</a></li>
-            </ul>
-        </li>
-
-        <!-- Time & Date Calculators -->
-        <li class="menu-item has-dropdown">
-            <span class="menu-link">
-                TIME & DATE CALCULATORS
-                <span class="arrow">&#9662;</span>
-            </span>
-            <ul class="dropdown">
-                <li><a href="age.html">Age Calculator</a></li>
-                <li><a href="date.html">Date Difference Calculator</a></li>
-                <li><a href="count.html">Countdown Calculator</a></li>
-                <li><a href="hour.html">Work Hours Calculator</a></li>
-            </ul>
-        </li>
-    </ul>
-</div>
-
-<!-- Floating open button when sidebar is closed -->
-<button id="sidebarOpenBtn">&#8618;</button>
-
-<!-- Main Content -->
-<div class="main-content" id="mainContent">
-
-    <!-- Floating Background -->
-    <div class="bg">
-        <div class="blob"></div>
-        <div class="blob"></div>
-        <div class="blob"></div>
-    </div>
-<!-- Hero Section -->
-<section class="hero">
-    <h1>SmartCalc</h1>
-    <p>All-in-One Web Calculators for Fitness, Finance, and Time Management. Fast, Reliable, and Free!</p>
-    <div class="cta-buttons">
-        <a href="bmi.html">Try Calculators</a>
-        <a href="age.html">Get Started</a>
-    </div>
-</section>
-
-<!-- Features Section -->
-<section class="features">
-    <div class="feature-card">
-        <h3>Fitness Calculators</h3>
-        <p>Monitor your health with BMI, Heart Rate, Waist-to-Height Ratio, and Water Intake calculators. Track fitness progress and stay healthy effortlessly.</p>
-    </div>
-    <div class="feature-card">
-        <h3>Money & Budget Calculators</h3>
-        <p>Quickly calculate Tips, Discounts, Savings Goals, and Profit/Loss. Perfect for personal budgeting, shopping, and small business finance management.</p>
-    </div>
-    <div class="feature-card">
-        <h3>Time & Date Calculators</h3>
-        <p>Compute your Age, Date Differences, Event Countdowns, and Work Hours. Manage schedules, deadlines, and personal milestones easily.</p>
-    </div>
-    <div class="feature-card">
-        <h3>Fast & Responsive</h3>
-        <p>All calculators are optimized for desktop, tablet, and mobile. Enjoy smooth performance, instant calculations, and a user-friendly interface.</p>
-    </div>
-</section>
-
-<!-- How It Works Section -->
-<section class="how-it-works">
-    <h2>How SmartCalc Works</h2>
-    <p>Simply select a calculator, enter your input values, and instantly get accurate results. Each tool provides detailed guidance, risk assessment, or financial insight depending on the category.</p>
-</section>
-
-<!-- Why SmartCalc Section -->
-<section class="why-smartcalc">
-    <h2>Why Choose SmartCalc?</h2>
-    <ul>
-        <li>Free, fast, and accessible online from any device</li>
-        <li>Covers Fitness, Finance, and Time management</li>
-        <li>Accurate and reliable calculations</li>
-        <li>Easy-to-use interface for everyone</li>
-        <li>Helps you make informed health and financial decisions</li>
-    </ul>
-</section>
-</div>
-
-<script src="script.js"></script>
-<script src="sidebar.js"></script>
+<div id="root"></div>
+<script type="module" src="/src/main.jsx"></script>
 </body>
 </html>

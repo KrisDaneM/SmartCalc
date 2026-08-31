@@ -1,0 +1,8 @@
+node_modules/
+dist/
+coverage/
+.vite/
+.edge-*/
+.chrome-*/
+*-qa.png
+*.log
