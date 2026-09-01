@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { Link, Navigate, useLocation } from 'react-router-dom'
 import { AlertCircle, ArrowRight, RotateCcw } from 'lucide-react'
 import SEO from '../components/SEO'
@@ -14,6 +14,7 @@ export default function CalculatorPage(){
   const location=useLocation(),tool=calculatorByPath.get(location.pathname)
   const [values,setValues]=useState(()=>tool?initialValues(tool):{}),[result,setResult]=useState(null),[error,setError]=useState('')
   const related=useMemo(()=>tool?calculators.filter(x=>x.category===tool.category&&x.id!==tool.id).slice(0,3):[],[tool])
+  useEffect(()=>{if(!tool)return;try{const previous=JSON.parse(localStorage.getItem('smartcalc-recent')||'[]');localStorage.setItem('smartcalc-recent',JSON.stringify([tool.path,...previous.filter(path=>path!==tool.path)].slice(0,5)))}catch{/* Recent-tool history is optional and stores paths only. */}},[tool])
   if(!tool)return <Navigate to="/404" replace/>
   if(tool.legacy?.includes(location.pathname))return <Navigate to={tool.path} replace/>
   const change=(name,value)=>{setValues(v=>({...v,[name]:value}));setError('')}
